@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Knight Owl · Offline chess puzzles</title>
+  <meta name="description" content="100,000+ rated chess puzzles that work with zero internet. No account, no ads, no subscription. Pay once.">
+  <style>
+    :root {
+      --bg: #0D0F12; --surface: #16191E; --hairline: #2A2F38;
+      --text: #F4F5F7; --secondary: #9BA3AF; --tertiary: #5F6672;
+      --brass: #C9A25D;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    main { max-width: 560px; margin: 0 auto; padding: 96px 24px 64px; }
+    .knight { font-size: 56px; }
+    h1 { font-size: 40px; letter-spacing: -0.5px; margin-top: 16px; }
+    .tagline { font-size: 20px; color: var(--secondary); margin-top: 12px; }
+    .features { margin-top: 48px; display: grid; gap: 16px; }
+    .feature {
+      background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: 14px; padding: 18px 20px;
+    }
+    .feature strong { display: block; font-size: 16px; }
+    .feature span { color: var(--secondary); font-size: 14px; }
+    .price { margin-top: 48px; font-size: 17px; color: var(--text); }
+    .price b { color: var(--brass); }
+    .cta {
+      display: inline-block; margin-top: 20px; padding: 14px 28px;
+      background: var(--brass); color: #0D0F12; font-weight: 600;
+      border-radius: 12px; text-decoration: none; font-size: 17px;
+    }
+    footer {
+      margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--hairline);
+      font-size: 13px; color: var(--tertiary);
+    }
+    footer a { color: var(--secondary); }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #F7F7F4; --surface: #FFFFFF; --hairline: #D8D7CF;
+              --text: #1A1D21; --secondary: #5C6370; --tertiary: #9096A0; --brass: #8A6A2F; }
+      .cta { color: #FFFFFF; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="knight">♞</div>
+    <h1>Knight Owl</h1>
+    <p class="tagline">100,000+ rated chess puzzles that work with zero internet. On a plane, on the subway, off the grid.</p>
+
+    <div class="features">
+      <div class="feature">
+        <strong>Play it out</strong>
+        <span>Solved it? Keep playing the position against the engine and prove the win is really there.</span>
+      </div>
+      <div class="feature">
+        <strong>Adaptive and rated</strong>
+        <span>Puzzles match your level. Watch your rating climb, and see exactly which tactics need work.</span>
+      </div>
+      <div class="feature">
+        <strong>Private by design</strong>
+        <span>No account. No ads. No tracking. Your training data never leaves your phone.</span>
+      </div>
+    </div>
+
+    <p class="price">20 puzzles free every day, forever. Unlock everything with <b>one purchase</b>. No subscription.</p>
+    <a class="cta" href="#">Coming soon to the App Store</a>
+
+    <footer>
+      <p>Puzzles from the <a href="https://database.lichess.org">Lichess Open Puzzle Database</a> (CC0). Not affiliated with or endorsed by lichess.org. Support them at <a href="https://lichess.org/patron">lichess.org/patron</a>.</p>
+      <p style="margin-top: 8px;"><a href="privacy.html">Privacy policy</a> · Contact: ben.wallace@kibu.com</p>
+    </footer>
+  </main>
+</body>
+</html>
