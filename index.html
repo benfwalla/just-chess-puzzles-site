@@ -30,7 +30,7 @@
       --hairline-2: #363C47;
       --text:       #F4F5F7;
       --text-2:     #9BA3AF;
-      --text-3:     #6B7280;
+      --text-3:     #7E8695;
       --brass:      #C9A25D;
       --brass-hi:   #E7C983;
       --brass-lo:   #B08D4B;
@@ -71,9 +71,7 @@
     .backdrop { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
     .backdrop::before {
       content: ""; position: absolute; inset: -20% -20% auto -20%; height: 90vh;
-      background:
-        radial-gradient(120% 80% at 70% -10%, var(--brass-glow), transparent 55%),
-        radial-gradient(90% 70% at 20% 0%, rgba(94, 120, 180, 0.10), transparent 60%);
+      background: radial-gradient(110% 70% at 66% -14%, rgba(201,162,93,0.13), transparent 58%);
       filter: blur(10px);
     }
     .backdrop::after {
@@ -133,14 +131,12 @@
       padding: 7px 14px; border: 1px solid var(--hairline-2); border-radius: 999px;
       background: rgba(201,162,93,0.06);
     }
-    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
 
     h1.hero-title {
       font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 6.4vw, 82px);
       line-height: 0.98; letter-spacing: -0.02em; margin: 26px 0 0;
       font-optical-sizing: auto;
     }
-    h1.hero-title em { font-style: italic; color: var(--brass); font-weight: 500; }
 
     .hero-sub { font-size: 19px; color: var(--text-2); max-width: 30ch; margin-top: 22px; line-height: 1.55; }
 
@@ -277,7 +273,7 @@
     .pricing { padding: 40px 0 100px; }
     .price-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 22px; }
     .price-card { border: 1px solid var(--hairline); border-radius: 22px; padding: 38px; background: var(--ink-2); position: relative; }
-    .price-card.feature { background: linear-gradient(165deg, rgba(201,162,93,0.09), var(--ink-2) 45%); border-color: rgba(201,162,93,0.35); box-shadow: 0 30px 70px -30px var(--brass-glow); }
+    .price-card.feature { background: linear-gradient(165deg, rgba(201,162,93,0.07), var(--ink-2) 42%); border-color: rgba(201,162,93,0.3); }
     .price-tag { font-family: var(--mono); font-size: 12px; color: var(--text-2); letter-spacing: 0.05em; }
     .price-card.feature .price-tag { color: var(--brass); }
     .price-amt { font-family: var(--serif); font-weight: 500; margin-top: 14px; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; }
@@ -299,15 +295,22 @@
     .foot-brand .n { font-weight: 600; }
     .foot-brand .m { font-size: 13px; color: var(--text-3); font-family: var(--mono); }
     .foot-links { display: flex; gap: 40px; flex-wrap: wrap; }
-    .foot-col h4 { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+    .foot-col h4 { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 14px; }
     .foot-col a, .foot-col p { display: block; color: var(--text-2); text-decoration: none; font-size: 14px; margin-bottom: 9px; }
     .foot-col a:hover { color: var(--text); }
     .attribution { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--hairline); font-size: 12.5px; color: var(--text-3); line-height: 1.7; max-width: 760px; }
     .attribution a { color: var(--text-2); }
 
     /* ---------- reveal ---------- */
-    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
+    .feat-grid .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .feat-grid .reveal:nth-child(3) { transition-delay: 0.12s; }
+    .feat-grid .reveal:nth-child(4) { transition-delay: 0.18s; }
+    .price-grid .reveal:nth-child(2) { transition-delay: 0.09s; }
+    .shots-scroll .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .shots-scroll .reveal:nth-child(3) { transition-delay: 0.12s; }
+    .shots-scroll .reveal:nth-child(4) { transition-delay: 0.18s; }
     [data-stagger] > * { opacity: 0; transform: translateY(20px); animation: rise 0.9s var(--ease) forwards; }
     @keyframes rise { to { opacity: 1; transform: none; } }
 
@@ -370,8 +373,8 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy" data-stagger>
-        <span class="eyebrow" style="animation-delay:.05s"><span class="dot"></span>117,121 puzzles · works at 0% signal</span>
-        <h1 class="hero-title" style="animation-delay:.12s">Chess tactics that never ask for <em>the internet.</em></h1>
+        <span class="eyebrow" style="animation-delay:.05s">117,121 puzzles · works at 0% signal</span>
+        <h1 class="hero-title" style="animation-delay:.12s">Chess tactics that never ask for the internet.</h1>
         <p class="hero-sub" style="animation-delay:.2s">A hundred thousand rated puzzles, bundled in the app. On a plane, on the subway, off the grid. No account, no ads, no catch.</p>
         <div class="hero-cta" style="animation-delay:.28s">
           <a class="appstore" href="#" aria-label="Download on the App Store" data-appstore></a>
@@ -388,7 +391,7 @@
           <div class="phone-screen">
             <div class="island"></div>
             <div class="scr-top">
-              <span class="scr-theme">// fork</span>
+              <span class="scr-theme">fork</span>
               <span class="scr-rating">rating 1523</span>
             </div>
             <div class="scr-turn"><b>White</b> to move · find the shot</div>
@@ -428,7 +431,7 @@
   <section class="features" id="features">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-kicker">// what you get</span>
+        <span class="sec-kicker">what you get</span>
         <h2>Built for the board, not the feed.</h2>
         <p>Every decision points one way: more time on tactics, less on everything else.</p>
       </div>
@@ -469,7 +472,7 @@
   <section class="spot" id="playitout">
     <div class="wrap spot-grid">
       <div class="spot-copy reveal">
-        <span class="sec-kicker">// the part other apps skip</span>
+        <span class="sec-kicker">the part other apps skip</span>
         <h2>Finding the move is only half of it.</h2>
         <p>Most trainers show a green checkmark and move on. Here, when the tactic lands, the position stays live and the engine fights back. You have to actually convert.</p>
         <ul class="spot-list">
@@ -485,7 +488,7 @@
                  <img class="fill" src="assets/screenshots/play-it-out.png" alt="Play it out"> -->
             <div class="shot-ph">
               <img class="icn" src="assets/icon.png" alt="">
-              <div class="t">SCREENSHOT</div>
+              <div class="t">Screenshot</div>
               <div class="s">Play it out</div>
             </div>
           </div>
@@ -498,32 +501,32 @@
   <section class="gallery">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-kicker">// a look inside</span>
+        <span class="sec-kicker">a look inside</span>
         <h2>Quiet, fast, and out of your way.</h2>
       </div>
       <div class="shots-scroll">
         <div class="reveal">
           <div class="shot"><div class="shot-inner">
             <!-- <img class="fill" src="assets/screenshots/board.png" alt="The board"> -->
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">SCREENSHOT</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
           </div></div>
           <div class="shot-cap">The board</div>
         </div>
         <div class="reveal">
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">SCREENSHOT</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
           </div></div>
           <div class="shot-cap">Your progress</div>
         </div>
         <div class="reveal">
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">SCREENSHOT</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
           </div></div>
           <div class="shot-cap">Theme filters</div>
         </div>
         <div class="reveal">
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">SCREENSHOT</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
           </div></div>
           <div class="shot-cap">Strength by theme</div>
         </div>
@@ -535,13 +538,13 @@
   <section class="pricing" id="pricing">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-kicker">// honest pricing</span>
+        <span class="sec-kicker">honest pricing</span>
         <h2>Pay once. Never again.</h2>
         <p>No subscription, no upsells, no ads waiting behind a paywall. Try it free every day; unlock the whole thing for the price of a coffee.</p>
       </div>
       <div class="price-grid">
         <div class="price-card reveal">
-          <div class="price-tag">// free, forever</div>
+          <div class="price-tag">free, forever</div>
           <div class="price-amt"><span class="big">$0</span></div>
           <p class="price-desc">Twenty rated puzzles every single day. No account required.</p>
           <ul class="price-list">
@@ -551,7 +554,7 @@
           </ul>
         </div>
         <div class="price-card feature reveal">
-          <div class="price-tag">// unlock everything</div>
+          <div class="price-tag">unlock everything</div>
           <div class="price-amt"><span class="big">$4.99</span><span class="per">one time</span></div>
           <p class="price-desc">Everything, unlocked for good. A single tap, then it is yours.</p>
           <ul class="price-list">
@@ -590,14 +593,14 @@
           <div class="foot-col">
             <h4>More</h4>
             <a href="privacy.html">Privacy policy</a>
-            <a href="mailto:ben.wallace@kibu.com">Contact</a>
+            <a href="mailto:support@justchesspuzzles.app">Contact</a>
             <a href="https://database.lichess.org" target="_blank" rel="noopener">Puzzle source</a>
           </div>
         </div>
       </div>
       <p class="attribution">
         Puzzles from the <a href="https://database.lichess.org" target="_blank" rel="noopener">Lichess Open Puzzle Database</a> (CC0). Just Chess Puzzles is not affiliated with or endorsed by lichess.org; if you enjoy their work, support them at <a href="https://lichess.org/patron" target="_blank" rel="noopener">lichess.org/patron</a>. Piece graphics are the cburnett set under the Wikimedia Commons BSD-3 election.<br>
-        &copy; 2026 Ben Wallace · ben.wallace@kibu.com
+        &copy; 2026 Just Chess Puzzles
       </p>
     </div>
   </footer>
