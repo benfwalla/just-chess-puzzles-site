@@ -301,19 +301,6 @@
     .attribution { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--hairline); font-size: 12.5px; color: var(--text-3); line-height: 1.7; max-width: 760px; }
     .attribution a { color: var(--text-2); }
 
-    /* ---------- reveal ---------- */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .reveal.in { opacity: 1; transform: none; }
-    .feat-grid .reveal:nth-child(2) { transition-delay: 0.06s; }
-    .feat-grid .reveal:nth-child(3) { transition-delay: 0.12s; }
-    .feat-grid .reveal:nth-child(4) { transition-delay: 0.18s; }
-    .price-grid .reveal:nth-child(2) { transition-delay: 0.09s; }
-    .shots-scroll .reveal:nth-child(2) { transition-delay: 0.06s; }
-    .shots-scroll .reveal:nth-child(3) { transition-delay: 0.12s; }
-    .shots-scroll .reveal:nth-child(4) { transition-delay: 0.18s; }
-    [data-stagger] > * { opacity: 0; transform: translateY(20px); animation: rise 0.9s var(--ease) forwards; }
-    @keyframes rise { to { opacity: 1; transform: none; } }
-
     /* ---------- responsive ---------- */
     @media (max-width: 940px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
@@ -341,7 +328,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; }
       .phone { animation: none; }
     }
   </style>
@@ -678,11 +664,6 @@
     function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 12); }
     onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-    // ---- Reveal on scroll ----
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   </script>
 </body>
 </html>
