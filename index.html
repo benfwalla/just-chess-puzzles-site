@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0D0F12">
-  <title>Just Chess Puzzles · 117,121 rated puzzles, fully offline</title>
-  <meta name="description" content="117,121 rated chess puzzles that work with zero internet. No account, no ads, no tracking, no subscription. Twenty free every day, forever. Pay once to unlock everything.">
+  <title>Just Chess Puzzles · 100,000+ offline chess puzzles</title>
+  <meta name="description" content="$5 for 100,000+ rated chess puzzles that work fully offline. Hints, an Elo bar, and a play-on mode. No accounts, no ads, no subscription.">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Just Chess Puzzles">
-  <meta property="og:description" content="117,121 rated chess puzzles that work with zero internet. No account. No ads. Pay once.">
+  <meta property="og:description" content="$5 for 100,000+ offline chess puzzles. No accounts, no ads, no bs.">
   <meta property="og:image" content="assets/icon.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -32,13 +32,7 @@
       --text-2:     #9BA3AF;
       --text-3:     #7E8695;
       --brass:      #C9A25D;
-      --brass-hi:   #E7C983;
-      --brass-lo:   #B08D4B;
-      --brass-glow: rgba(201, 162, 93, 0.28);
-      --success:    #5CB870;
-      --error:      #E5484D;
 
-      /* warm walnut & brass board, tied to the golden logo */
       --sq-light:   #E9DCBB;
       --sq-dark:    #A17E4C;
       --sq-move:    rgba(201, 162, 93, 0.55);
@@ -53,18 +47,11 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     ::selection { background: var(--brass); color: var(--ink); }
-
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
     body {
-      font-family: var(--sans);
-      background: var(--ink);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 17px;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      font-family: var(--sans); background: var(--ink); color: var(--text);
+      line-height: 1.6; font-size: 17px; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     }
 
     /* ---------- atmosphere ---------- */
@@ -81,78 +68,56 @@
       background-size: 68px 68px;
       -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 5%, transparent 62%);
               mask-image: radial-gradient(120% 90% at 50% 0%, #000 5%, transparent 62%);
-      opacity: 0.28;
+      opacity: 0.24;
     }
     .grain {
-      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.05;
-      mix-blend-mode: overlay;
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* ---------- layout ---------- */
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
     section { position: relative; }
 
-    /* ---------- nav ---------- */
-    header.nav { position: sticky; top: 14px; z-index: 100; padding: 14px 16px 0; }
+    /* ---------- nav (floating pill) ---------- */
+    header.nav { position: sticky; top: 8px; z-index: 100; padding: 8px 12px 0; }
     .nav-inner {
-      max-width: 1060px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
-      height: 58px; padding: 0 10px 0 18px;
+      max-width: 540px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+      height: 44px; padding: 0 6px 0 12px;
       border-radius: 100px; border: 1px solid var(--hairline);
       background: rgba(20, 23, 28, 0.72);
       backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
     }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-    .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-    .brand span { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { color: var(--text-2); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links .divider { width: 1px; height: 20px; background: var(--hairline-2); }
+    .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
+    .brand img { width: 24px; height: 24px; border-radius: 7px; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    .brand span { font-weight: 600; font-size: 14px; letter-spacing: -0.01em; }
 
     /* ---------- App Store button ---------- */
     .appstore {
-      display: inline-flex; align-items: center; gap: 11px; text-decoration: none;
-      background: #0A0A0B; border: 1px solid var(--hairline-2); border-radius: 13px;
-      padding: 9px 18px 9px 15px; transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+      display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+      background: #0A0A0B; border: 1px solid var(--hairline-2); border-radius: 15px;
+      padding: 13px 26px 13px 21px; transition: border-color 0.25s var(--ease);
       font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
     }
-    .appstore:hover { transform: translateY(-2px); border-color: #4A505C; }
-    .appstore .as-logo svg { display: block; width: 22px; height: 22px; fill: #fff; }
+    .appstore:hover { border-color: #4A505C; }
+    .appstore .as-logo svg { display: block; width: 28px; height: 28px; fill: #fff; }
     .appstore .as-txt { display: flex; flex-direction: column; line-height: 1; color: #fff; }
-    .appstore .as-txt small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.92; }
-    .appstore .as-txt strong { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; margin-top: 2px; }
-    .appstore.sm { padding: 6px 15px 6px 12px; border-radius: 11px; gap: 9px; }
-    .appstore.sm .as-logo svg { width: 18px; height: 18px; }
-    .appstore.sm .as-txt small { font-size: 7.5px; }
-    .appstore.sm .as-txt strong { font-size: 13.5px; }
+    .appstore .as-txt small { font-size: 11px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.92; }
+    .appstore .as-txt strong { font-size: 21px; font-weight: 500; letter-spacing: -0.01em; margin-top: 3px; }
+    .appstore.sm { padding: 5px 11px 5px 9px; border-radius: 10px; gap: 7px; }
+    .appstore.sm .as-logo svg { width: 15px; height: 15px; }
+    .appstore.sm .as-txt small { font-size: 7px; }
+    .appstore.sm .as-txt strong { font-size: 12px; margin-top: 1px; }
 
     /* ---------- hero ---------- */
-    .hero { padding: 72px 0 40px; }
+    .hero { padding: 44px 0 68px; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-
-    .eyebrow {
-      font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.02em;
-      color: var(--brass); display: inline-flex; align-items: center; gap: 10px;
-      padding: 7px 14px; border: 1px solid var(--hairline-2); border-radius: 999px;
-      background: rgba(201,162,93,0.06);
-    }
-
     h1.hero-title {
-      font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 6.4vw, 82px);
-      line-height: 0.98; letter-spacing: -0.02em; margin: 26px 0 0;
-      font-optical-sizing: auto;
+      font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5.6vw, 74px);
+      line-height: 1.0; letter-spacing: -0.02em; margin: 0; font-optical-sizing: auto;
     }
-
-    .hero-sub { font-size: 19px; color: var(--text-2); max-width: 30ch; margin-top: 22px; line-height: 1.55; }
-
-    .hero-cta { display: flex; align-items: center; gap: 20px; margin-top: 34px; flex-wrap: wrap; }
-    .cta-meta { font-family: var(--mono); font-size: 12.5px; color: var(--text-3); line-height: 1.5; }
-    .cta-meta b { color: var(--text-2); font-weight: 500; }
-
-    .hero-rating { display: flex; align-items: center; gap: 10px; margin-top: 30px; color: var(--text-2); font-size: 14px; }
-    .stars { color: var(--brass); letter-spacing: 2px; font-size: 15px; }
+    .hero-sub { font-size: 19px; color: var(--text-2); max-width: 34ch; margin-top: 22px; line-height: 1.55; }
+    .hero-cta { margin-top: 34px; display: flex; }
 
     /* ---------- phone ---------- */
     .phone-stage { display: flex; justify-content: center; position: relative; }
@@ -160,35 +125,20 @@
       position: relative; z-index: 1; width: 300px; aspect-ratio: 300 / 620;
       background: linear-gradient(150deg, #23272F, #0c0d10);
       border-radius: 46px; padding: 12px;
-      box-shadow:
-        0 0 0 2px #34383F,
-        0 2px 2px 2px rgba(255,255,255,0.04) inset,
-        0 40px 80px -20px rgba(0,0,0,0.75),
-        0 10px 30px rgba(0,0,0,0.5);
-      animation: float 7s ease-in-out infinite;
+      box-shadow: 0 0 0 2px #34383F, 0 2px 2px 2px rgba(255,255,255,0.04) inset,
+        0 40px 80px -20px rgba(0,0,0,0.75), 0 10px 30px rgba(0,0,0,0.5);
     }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(-0.4deg); } }
-    .phone-screen {
-      position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden;
-      background: var(--ink); display: flex; flex-direction: column;
-    }
+    .phone-screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: var(--ink); display: flex; flex-direction: column; }
     .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; background: #000; border-radius: 999px; z-index: 5; }
-
     .scr-top { padding: 40px 16px 10px; display: flex; align-items: center; justify-content: space-between; }
     .scr-theme { font-family: var(--mono); font-size: 11px; color: var(--brass); letter-spacing: 0.03em; }
     .scr-rating { font-family: var(--mono); font-size: 11px; color: var(--text-2); background: var(--ink-3); padding: 4px 9px; border-radius: 999px; border: 1px solid var(--hairline); }
     .scr-turn { padding: 0 16px 12px; font-size: 13px; color: var(--text-2); font-weight: 500; }
     .scr-turn b { color: var(--text); font-weight: 600; }
-
     .board-row { display: flex; gap: 8px; padding: 0 14px; align-items: stretch; }
     .evalbar { width: 8px; border-radius: 4px; overflow: hidden; background: #111; border: 1px solid var(--hairline); position: relative; }
     .evalbar .white { position: absolute; left: 0; right: 0; bottom: 0; height: 72%; background: linear-gradient(#fff, #d8d8d8); }
-
-    .board {
-      flex: 1; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);
-      aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.3);
-    }
+    .board { flex: 1; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.3); }
     .sq { position: relative; }
     .sq .pc { position: absolute; inset: 8%; z-index: 2; }
     .sq .pc svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35)); }
@@ -198,137 +148,54 @@
     .sq.sel::after { content: ""; position: absolute; inset: 0; background: var(--sq-move); z-index: 1; }
     .sq.check .pc { z-index: 3; }
     .sq.check::before { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(circle, rgba(229,72,77,0.9), rgba(229,72,77,0) 72%); }
-
     .scr-foot { margin-top: auto; padding: 12px 16px 20px; display: flex; gap: 8px; }
     .scr-btn { flex: 1; text-align: center; font-size: 12px; font-weight: 600; padding: 11px; border-radius: 11px; }
     .scr-btn.ghost { border: 1px solid var(--hairline-2); color: var(--text-2); }
     .scr-btn.solid { background: var(--brass); color: var(--ink); }
 
-    /* ---------- marquee ---------- */
-    .marquee { margin-top: 26px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); overflow: hidden; padding: 16px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-    .marquee-track { display: flex; gap: 40px; width: max-content; animation: slide 42s linear infinite; }
-    .marquee-track span { font-family: var(--mono); font-size: 13px; color: var(--text-3); white-space: nowrap; letter-spacing: 0.04em; }
-    .marquee-track span b { color: var(--brass); font-weight: 400; }
-    @keyframes slide { to { transform: translateX(-50%); } }
-
-    /* ---------- stats ---------- */
-    .stats { padding: 68px 0 20px; }
-    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; }
-    .stat { background: var(--ink); padding: 30px 24px; }
-    .stat .num { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1; letter-spacing: -0.02em; }
-    .stat .num.brass { color: var(--brass); }
-    .stat .lbl { font-family: var(--mono); font-size: 11.5px; color: var(--text-2); margin-top: 12px; letter-spacing: 0.02em; }
-
-    /* ---------- section heads ---------- */
+    /* ---------- features (screenshots) ---------- */
+    .features { padding: 48px 0 100px; }
     .sec-head { max-width: 640px; margin-bottom: 44px; }
-    .sec-kicker { font-family: var(--mono); font-size: 12.5px; color: var(--brass); letter-spacing: 0.06em; }
-    .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.04; letter-spacing: -0.02em; margin-top: 14px; }
-    .sec-head p { color: var(--text-2); margin-top: 16px; font-size: 18px; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.04; letter-spacing: -0.02em; }
 
-    /* ---------- features ---------- */
-    .features { padding: 96px 0; }
-    .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .feat {
-      position: relative; background: linear-gradient(180deg, var(--ink-2), var(--ink)); border: 1px solid var(--hairline);
-      border-radius: 20px; padding: 32px; overflow: hidden; transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
-    }
-    .feat:hover { transform: translateY(-4px); border-color: var(--hairline-2); }
-    .feat-ico { width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: rgba(201,162,93,0.1); border: 1px solid rgba(201,162,93,0.24); color: var(--brass); margin-bottom: 22px; }
-    .feat-ico svg { width: 24px; height: 24px; }
-    .feat h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; letter-spacing: -0.01em; }
-    .feat p { color: var(--text-2); margin-top: 10px; font-size: 15.5px; line-height: 1.6; }
-
-    /* ---------- spotlight ---------- */
-    .spot { padding: 40px 0 96px; }
-    .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .spot-copy h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 46px); line-height: 1.06; letter-spacing: -0.02em; margin-top: 14px; }
-    .spot-copy p { color: var(--text-2); margin-top: 18px; font-size: 17px; }
-    .spot-list { margin-top: 26px; display: grid; gap: 14px; }
-    .spot-list li { list-style: none; display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 15.5px; }
-    .spot-list .chk { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(92,184,112,0.14); color: var(--success); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .spot-list .chk svg { width: 13px; height: 13px; }
-
-    /* placeholder screenshot frame */
-    .shot { position: relative; width: 100%; aspect-ratio: 300 / 620; max-width: 300px; margin: 0 auto;
+    .shots-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .shot { position: relative; width: 100%; aspect-ratio: 300 / 620; margin: 0 auto;
       background: linear-gradient(150deg, #23272F, #0c0d10); border-radius: 44px; padding: 11px;
       box-shadow: 0 0 0 2px #34383F, 0 30px 70px -22px rgba(0,0,0,0.7); }
     .shot-inner { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: var(--ink-2);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; position: relative;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;
       background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 14px, transparent 14px 28px);
-      border: 1px dashed var(--hairline-2);
-    }
+      border: 1px dashed var(--hairline-2); }
     .shot-inner > img.fill { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
     .shot-ph { text-align: center; color: var(--text-3); z-index: 1; }
     .shot-ph .icn { width: 42px; height: 42px; opacity: 0.5; margin: 0 auto 12px; border-radius: 11px; object-fit: contain; }
-    .shot-ph .t { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; }
-    .shot-ph .s { font-size: 12px; color: var(--text-2); margin-top: 4px; }
-
-    /* ---------- gallery ---------- */
-    .gallery { padding: 0 0 96px; }
-    .shots-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-    .gallery .shot { max-width: none; }
-    .shot-cap { text-align: center; margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--text-2); letter-spacing: 0.03em; }
-
-    /* ---------- pricing ---------- */
-    .pricing { padding: 40px 0 100px; }
-    .price-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 22px; }
-    .price-card { border: 1px solid var(--hairline); border-radius: 22px; padding: 38px; background: var(--ink-2); position: relative; }
-    .price-card.feature { background: var(--ink-2); border-color: rgba(201,162,93,0.34); }
-    .price-tag { font-family: var(--mono); font-size: 12px; color: var(--text-2); letter-spacing: 0.05em; }
-    .price-card.feature .price-tag { color: var(--brass); }
-    .price-amt { font-family: var(--serif); font-weight: 500; margin-top: 14px; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; }
-    .price-amt .big { font-size: 52px; line-height: 1; }
-    .price-amt .per { font-size: 15px; color: var(--text-2); font-family: var(--sans); }
-    .price-desc { color: var(--text-2); margin-top: 10px; font-size: 15px; }
-    .price-list { margin-top: 26px; display: grid; gap: 13px; }
-    .price-list li { list-style: none; display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text); }
-    .price-list .chk { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(201,162,93,0.14); color: var(--brass); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-    .price-list .chk svg { width: 12px; height: 12px; }
-    .price-card .appstore { margin-top: 30px; }
-    .restore-note { margin-top: 16px; font-size: 13px; color: var(--text-3); }
+    .shot-ph .t { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+    .shot-cap { margin-top: 20px; max-width: 12ch; font-size: clamp(20px, 2vw, 28px); font-weight: 600; line-height: 1.12; letter-spacing: -0.03em; color: var(--text); }
 
     /* ---------- footer ---------- */
-    footer.site { border-top: 1px solid var(--hairline); padding: 56px 0 64px; }
-    .foot-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+    footer.site { border-top: 1px solid var(--hairline); padding: 48px 0 56px; }
     .foot-brand { display: flex; align-items: center; gap: 12px; }
-    .foot-brand img { width: 40px; height: 40px; border-radius: 10px; }
+    .foot-brand img { width: 38px; height: 38px; border-radius: 10px; }
     .foot-brand .n { font-weight: 600; }
-    .foot-brand .m { font-size: 13px; color: var(--text-3); font-family: var(--mono); }
-    .foot-links { display: flex; gap: 40px; flex-wrap: wrap; }
-    .foot-col h4 { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 14px; }
-    .foot-col a, .foot-col p { display: block; color: var(--text-2); text-decoration: none; font-size: 14px; margin-bottom: 9px; }
-    .foot-col a:hover { color: var(--text); }
-    .attribution { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--hairline); font-size: 12.5px; color: var(--text-3); line-height: 1.7; max-width: 760px; }
+    .attribution { margin-top: 28px; font-size: 12.5px; color: var(--text-3); line-height: 1.7; max-width: 760px; }
     .attribution a { color: var(--text-2); }
 
     /* ---------- responsive ---------- */
     @media (max-width: 940px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; text-align: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
-      .hero-cta, .hero-rating { justify-content: center; }
-      .eyebrow { margin: 0 auto; }
-      .spot-grid { grid-template-columns: 1fr; gap: 44px; }
-      .spot-copy { order: 2; }
-      .price-grid { grid-template-columns: 1fr; }
-      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-cta { justify-content: center; }
       .shots-scroll { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 62%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scrollbar-width: none; }
       .shots-scroll::-webkit-scrollbar { display: none; }
       .shots-scroll > div { scroll-snap-align: center; }
-      .gallery .shot { max-width: 260px; }
+      .shots-scroll .shot { max-width: 260px; }
     }
     @media (max-width: 620px) {
       body { font-size: 16px; }
-      .nav-links .l-hide { display: none; }
-      .feat-grid { grid-template-columns: 1fr; }
-      .stat-grid { grid-template-columns: 1fr 1fr; }
-      .feat { padding: 26px; }
-      .price-card { padding: 28px; }
-      .foot-links { gap: 28px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto; }
-      .phone { animation: none; }
+      .brand span { font-size: 13px; }
+      .nav-inner { height: 42px; padding: 0 6px 0 10px; }
+      .appstore { padding: 12px 22px 12px 18px; }
+      .appstore .as-txt strong { font-size: 19px; }
     }
   </style>
 </head>
@@ -337,19 +204,13 @@
   <div class="grain"></div>
 
   <!-- ============ NAV ============ -->
-  <header class="nav" id="nav">
+  <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top">
         <img src="assets/icon.png" alt="Just Chess Puzzles icon">
         <span>Just Chess Puzzles</span>
       </a>
-      <nav class="nav-links">
-        <a class="l-hide" href="#features">Features</a>
-        <a class="l-hide" href="#playitout">Play it out</a>
-        <a class="l-hide" href="#pricing">Pricing</a>
-        <span class="divider l-hide"></span>
-        <a class="appstore sm" href="#" aria-label="Download on the App Store" data-appstore></a>
-      </nav>
+      <a class="appstore sm" href="#" aria-label="Download on the App Store" data-appstore></a>
     </div>
   </header>
 
@@ -358,21 +219,15 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy" data-stagger>
-        <span class="eyebrow" style="animation-delay:.05s">117,121 puzzles · works at 0% signal</span>
-        <h1 class="hero-title" style="animation-delay:.12s">Chess tactics that never ask for the internet.</h1>
-        <p class="hero-sub" style="animation-delay:.2s">A hundred thousand rated puzzles, bundled in the app. On a plane, on the subway, off the grid. No account, no ads, no catch.</p>
-        <div class="hero-cta" style="animation-delay:.28s">
+      <div class="hero-copy">
+        <h1 class="hero-title">$5 for 100,000+ offline chess puzzles.</h1>
+        <p class="hero-sub">Every puzzle comes with hints, an Elo bar, and a play-on mode to finish the win against the engine. No accounts, no ads, no bs.</p>
+        <div class="hero-cta">
           <a class="appstore" href="#" aria-label="Download on the App Store" data-appstore></a>
-          <div class="cta-meta">Coming soon.<br><b>20 free every day, forever.</b></div>
-        </div>
-        <div class="hero-rating" style="animation-delay:.36s">
-          <span class="stars">★★★★★</span>
-          <span>one-time $4.99 unlock · no subscription</span>
         </div>
       </div>
 
-      <div class="phone-stage reveal">
+      <div class="phone-stage">
         <div class="phone">
           <div class="phone-screen">
             <div class="island"></div>
@@ -393,164 +248,38 @@
         </div>
       </div>
     </div>
-
-    <div class="wrap">
-      <div class="marquee">
-        <div class="marquee-track" id="marquee"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ STATS ============ -->
-  <section class="stats">
-    <div class="wrap">
-      <div class="stat-grid reveal">
-        <div class="stat"><div class="num brass">117,121</div><div class="lbl">rated puzzles, bundled</div></div>
-        <div class="stat"><div class="num">0</div><div class="lbl">accounts · ads · trackers</div></div>
-        <div class="stat"><div class="num">$4.99</div><div class="lbl">once, then it is yours</div></div>
-        <div class="stat"><div class="num">~2300</div><div class="lbl">Elo engine, on device</div></div>
-      </div>
-    </div>
   </section>
 
   <!-- ============ FEATURES ============ -->
-  <section class="features" id="features">
+  <section class="features">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">what you get</span>
-        <h2>Built for the board, not the feed.</h2>
-        <p>Every decision points one way: more time on tactics, less on everything else.</p>
-      </div>
-      <div class="feat-grid">
-        <div class="feat reveal">
-          <div class="feat-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a17 17 0 0 1 20 0"/><path d="M5 12a12 12 0 0 1 14 0"/><path d="M8.5 15.5a7 7 0 0 1 7 0"/><circle cx="12" cy="19" r="0.6" fill="currentColor"/><path d="M3 3l18 18"/></svg>
-          </div>
-          <h3>Offline by design</h3>
-          <p>All 117,121 puzzles live inside the binary. No download, no sign-in, no waiting on a connection that is not there.</p>
-        </div>
-        <div class="feat reveal">
-          <div class="feat-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5l6 6-2 2-6-6z"/><path d="M12.5 5.5L4 14v6h6l8.5-8.5"/><path d="M8 16l2 2"/></svg>
-          </div>
-          <h3>Play it out</h3>
-          <p>Solved it? Keep going against a 2300-rated engine and prove the win is really there. No guessing whether you found the point.</p>
-        </div>
-        <div class="feat reveal">
-          <div class="feat-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M7 16l4-5 3 3 5-7"/></svg>
-          </div>
-          <h3>Adaptive and rated</h3>
-          <p>Puzzles meet you at your level. Your rating climbs, and per-theme stats show exactly which tactics still need work.</p>
-        </div>
-        <div class="feat reveal">
-          <div class="feat-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.3"/></svg>
-          </div>
-          <h3>Private by design</h3>
-          <p>No account. No ads. No tracking. Your history, rating, and settings never leave the phone. Delete the app and it is all gone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SPOTLIGHT ============ -->
-  <section class="spot" id="playitout">
-    <div class="wrap spot-grid">
-      <div class="spot-copy reveal">
-        <span class="sec-kicker">the part other apps skip</span>
-        <h2>Finding the move is only half of it.</h2>
-        <p>Most trainers show a green checkmark and move on. Here, when the tactic lands, the position stays live and the engine fights back. You have to actually convert.</p>
-        <ul class="spot-list">
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Continue any solved puzzle against Lozza, on device</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> An evaluation bar that tells you the truth</li>
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Underpromotion respected everywhere, no auto-queen</li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="shot">
-          <div class="shot-inner">
-            <!-- To use a real screenshot, replace the .shot-ph block below with:
-                 <img class="fill" src="assets/screenshots/play-it-out.png" alt="Play it out"> -->
-            <div class="shot-ph">
-              <img class="icn" src="assets/icon.png" alt="">
-              <div class="t">Screenshot</div>
-              <div class="s">Play it out</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ GALLERY ============ -->
-  <section class="gallery">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">a look inside</span>
-        <h2>Quiet, fast, and out of your way.</h2>
+      <div class="sec-head">
+        <h2>Features</h2>
       </div>
       <div class="shots-scroll">
-        <div class="reveal">
+        <div>
           <div class="shot"><div class="shot-inner">
-            <!-- <img class="fill" src="assets/screenshots/board.png" alt="The board"> -->
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Puzzle library</div></div>
           </div></div>
-          <div class="shot-cap">The board</div>
+          <div class="shot-cap">100,000+ puzzles, all offline.</div>
         </div>
-        <div class="reveal">
+        <div>
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Play it out</div></div>
           </div></div>
-          <div class="shot-cap">Your progress</div>
+          <div class="shot-cap">Finish the win with Play it out.</div>
         </div>
-        <div class="reveal">
+        <div>
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Evaluation bar</div></div>
           </div></div>
-          <div class="shot-cap">Theme filters</div>
+          <div class="shot-cap">Keep the evaluation bar in view.</div>
         </div>
-        <div class="reveal">
+        <div>
           <div class="shot"><div class="shot-inner">
-            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Screenshot</div></div>
+            <div class="shot-ph"><img class="icn" src="assets/icon.png" alt=""><div class="t">Board and app themes</div></div>
           </div></div>
-          <div class="shot-cap">Strength by theme</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section class="pricing" id="pricing">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">honest pricing</span>
-        <h2>Pay once. Never again.</h2>
-        <p>No subscription, no upsells, no ads waiting behind a paywall. Try it free every day; unlock the whole thing for the price of a coffee.</p>
-      </div>
-      <div class="price-grid">
-        <div class="price-card reveal">
-          <div class="price-tag">free, forever</div>
-          <div class="price-amt"><span class="big">$0</span></div>
-          <p class="price-desc">Twenty rated puzzles every single day. No account required.</p>
-          <ul class="price-list">
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> 20 daily puzzles, fully offline</li>
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Adaptive difficulty and rating</li>
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> No ads, ever</li>
-          </ul>
-        </div>
-        <div class="price-card feature reveal">
-          <div class="price-tag">unlock everything</div>
-          <div class="price-amt"><span class="big">$4.99</span><span class="per">one time</span></div>
-          <p class="price-desc">Everything, unlocked for good. A single tap, then it is yours.</p>
-          <ul class="price-list">
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> All 117,121 puzzles, no daily cap</li>
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Play it out against the engine</li>
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Evaluation bar and per-theme stats</li>
-            <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg></span> Theme filters to drill your weak spots</li>
-          </ul>
-          <a class="appstore" href="#" aria-label="Download on the App Store" data-appstore></a>
-          <p class="restore-note">Already bought it? Restore purchases from the paywall or Settings.</p>
+          <div class="shot-cap">Your board, your settings.</div>
         </div>
       </div>
     </div>
@@ -559,34 +288,13 @@
   <!-- ============ FOOTER ============ -->
   <footer class="site">
     <div class="wrap">
-      <div class="foot-grid">
-        <div>
-          <div class="foot-brand">
-            <img src="assets/icon.png" alt="">
-            <div>
-              <div class="n">Just Chess Puzzles</div>
-              <div class="m">offline. private. yours.</div>
-            </div>
-          </div>
-        </div>
-        <div class="foot-links">
-          <div class="foot-col">
-            <h4>Product</h4>
-            <a href="#features">Features</a>
-            <a href="#playitout">Play it out</a>
-            <a href="#pricing">Pricing</a>
-          </div>
-          <div class="foot-col">
-            <h4>More</h4>
-            <a href="privacy.html">Privacy policy</a>
-            <a href="mailto:support@justchesspuzzles.app">Contact</a>
-            <a href="https://database.lichess.org" target="_blank" rel="noopener">Puzzle source</a>
-          </div>
-        </div>
+      <div class="foot-brand">
+        <img src="assets/icon.png" alt="">
+        <div class="n">Just Chess Puzzles</div>
       </div>
       <p class="attribution">
         Puzzles from the <a href="https://database.lichess.org" target="_blank" rel="noopener">Lichess Open Puzzle Database</a> (CC0). Just Chess Puzzles is not affiliated with or endorsed by lichess.org; if you enjoy their work, support them at <a href="https://lichess.org/patron" target="_blank" rel="noopener">lichess.org/patron</a>. Piece graphics are the cburnett set under the Wikimedia Commons BSD-3 election.<br>
-        &copy; 2026 Just Chess Puzzles
+        &copy; 2026 Just Chess Puzzles · <a href="privacy.html">Privacy</a>
       </p>
     </div>
   </footer>
@@ -613,7 +321,6 @@
     };
     function pc(code){ return '<span class="pc"><svg viewBox="0 0 45 45">'+P[code]+'</svg></span>'; }
 
-    // files a-h -> 0..7, ranks 8..1 top to bottom, White at the bottom.
     var pos = {
       a8:'bR', d8:'bQ', g8:'bK',
       a7:'bP', b7:'bP', e7:'bB', f7:'bP', g7:'bP', h7:'bP',
@@ -625,9 +332,9 @@
     };
     var selected = 'e5';
     var lastMove = { from:'f3', to:'e5' };
-    var dots = ['c4','d3','d7','g4','g6'];   // empty squares the knight reaches
-    var rings = ['c6','f7'];                 // capturable targets (the fork)
-    var check = 'g8';                        // black king in the knight's sights
+    var dots = ['c4','d3','d7','g4','g6'];
+    var rings = ['c6','f7'];
+    var check = 'g8';
 
     var files = ['a','b','c','d','e','f','g','h'];
     var boardEl = document.getElementById('board');
@@ -649,13 +356,6 @@
       }
     }
     boardEl.innerHTML = html;
-
-    // ---- Marquee (chess themes) ----
-    var themes = ['fork','pin','skewer','discovered attack','back rank','deflection','zwischenzug','x-ray','smothered mate','windmill','overloading','clearance','interference','zugzwang','double check','decoy','trapped piece','underpromotion','greek gift','desperado'];
-    var line = themes.map(function(t){ return '<span><b>&#9670;</b> '+t+'</span>'; }).join('');
-    document.getElementById('marquee').innerHTML = line + line;
-
-
   </script>
 </body>
 </html>
