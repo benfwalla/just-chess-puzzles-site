@@ -3,20 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy · Just Chess Puzzles</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0D0F12">
+  <title>Privacy policy · Just Chess Puzzles</title>
+  <meta name="description" content="Just Chess Puzzles collects no data. The app works entirely offline.">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: -apple-system, system-ui, sans-serif; max-width: 640px; margin: 48px auto; padding: 0 20px; color: #1a1d21; line-height: 1.6; }
-    h1 { font-size: 28px; }
-    @media (prefers-color-scheme: dark) { body { background: #0d0f12; color: #f4f5f7; } }
+    :root {
+      --ink: #0D0F12; --ink-2: #16191E; --hairline: #2A2F38;
+      --text: #F4F5F7; --text-2: #9BA3AF; --text-3: #6B7280; --brass: #C9A25D;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Hanken Grotesk", -apple-system, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    ::selection { background: var(--brass); color: var(--ink); }
+    body { font-family: var(--sans); background: var(--ink); color: var(--text); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(90% 55% at 50% -10%, rgba(201,162,93,0.16), transparent 60%); }
+    main { max-width: 680px; margin: 0 auto; padding: 80px 24px 96px; }
+    .back { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-2); font-family: var(--mono); font-size: 13px; margin-bottom: 44px; }
+    .back:hover { color: var(--text); }
+    .back img { width: 26px; height: 26px; border-radius: 7px; }
+    .kicker { font-family: var(--mono); font-size: 12.5px; color: var(--brass); letter-spacing: 0.06em; }
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 7vw, 56px); letter-spacing: -0.02em; line-height: 1.02; margin: 14px 0 28px; }
+    .lead { font-size: 20px; color: var(--text); margin-bottom: 28px; }
+    p { color: var(--text-2); margin-bottom: 20px; }
+    p strong { color: var(--text); font-weight: 600; }
+    a { color: var(--brass); }
+    hr { border: none; border-top: 1px solid var(--hairline); margin: 40px 0; }
+    .updated { font-family: var(--mono); font-size: 12.5px; color: var(--text-3); }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p><strong>Just Chess Puzzles collects no data. None.</strong></p>
-  <p>The app works entirely offline. Your puzzle history, rating, and settings are stored only on your device and never leave it. There are no accounts, no analytics, no ads, no tracking, and no third-party SDKs that phone home.</p>
-  <p>The one-time unlock purchase is processed by Apple through the App Store. We never see your payment details. Apple's handling of that transaction is covered by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</p>
-  <p>If you delete the app, all of your data goes with it.</p>
-  <p>Questions: ben.wallace@kibu.com</p>
-  <p><small>Last updated: July 2026</small></p>
+  <div class="glow"></div>
+  <main>
+    <a class="back" href="index.html"><img src="assets/icon.png" alt="">&larr; Just Chess Puzzles</a>
+    <span class="kicker">// privacy policy</span>
+    <h1>We collect nothing. None of it.</h1>
+    <p class="lead">Just Chess Puzzles works entirely offline. There is no server for your data to travel to.</p>
+    <p>Your puzzle history, rating, and settings are stored only on your device and never leave it. There are no accounts, no analytics, no ads, no tracking, and no third-party SDKs that phone home.</p>
+    <p>The one-time unlock purchase is processed by Apple through the App Store. We never see your payment details. Apple's handling of that transaction is covered by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's privacy policy</a>.</p>
+    <p>If you delete the app, all of your data goes with it.</p>
+    <hr>
+    <p>Questions: <a href="mailto:ben.wallace@kibu.com">ben.wallace@kibu.com</a></p>
+    <p class="updated">Last updated: July 2026</p>
+  </main>
 </body>
 </html>
