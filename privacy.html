@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <style>
     :root {
       --ink: #0D0F12; --ink-2: #16191E; --hairline: #2A2F38; --hairline-2: #3A404A;
@@ -24,16 +25,13 @@
     body { font-family: var(--sans); background: var(--ink); color: var(--text); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
     .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(90% 55% at 50% -10%, rgba(201,162,93,0.16), transparent 60%); }
     header.nav { position: sticky; top: 8px; z-index: 100; padding: 8px 12px 0; }
-    .nav-inner { max-width: 500px; height: 48px; margin: 0 auto; padding: 0 6px 0 12px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--hairline); border-radius: 100px; background: rgba(20, 23, 28, 0.72); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32); }
+    .nav-inner { max-width: 450px; height: 56px; margin: 0 auto; padding: 0 9px 0 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--hairline); border-radius: 26px; background: rgba(20, 23, 28, 0.72); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22), 0 0 18px rgba(201, 162, 93, 0.035); }
     .brand { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; }
-    .brand img { width: 24px; height: 24px; border-radius: 7px; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
     .brand span { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
-    .appstore { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px 5px 9px; color: #fff; font-family: -apple-system, system-ui, "Segoe UI", sans-serif; text-decoration: none; background: #0A0A0B; border: 1px solid var(--hairline-2); border-radius: 10px; transition: border-color 0.25s; }
-    .appstore:hover { border-color: #4A505C; }
-    .appstore .as-logo svg { display: block; width: 15px; height: 15px; fill: #fff; }
-    .appstore .as-txt { display: flex; flex-direction: column; line-height: 1; }
-    .appstore .as-txt small { font-size: 7px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.92; }
-    .appstore .as-txt strong { margin-top: 1px; font-size: 12px; font-weight: 500; letter-spacing: -0.01em; }
+    .nav-download { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 36px; padding: 0 16px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; background: var(--ink-2); border: 1px solid var(--hairline-2); border-radius: 999px; transition: border-color 0.25s; }
+    .nav-download:hover { border-color: #4A505C; }
+    .nav-download i { font-size: 16px; line-height: 1; }
     main { max-width: 680px; margin: 0 auto; padding: 72px 24px 96px; }
     h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 7vw, 56px); letter-spacing: -0.02em; line-height: 1.02; margin: 0 0 28px; }
     p { color: var(--text-2); margin-bottom: 20px; }
@@ -41,7 +39,7 @@
     a { color: var(--brass); }
     hr { border: none; border-top: 1px solid var(--hairline); margin: 40px 0; }
     .updated { font-family: var(--mono); font-size: 12.5px; color: var(--text-3); }
-    @media (max-width: 620px) { .brand span { font-size: 13px; } .nav-inner { height: 46px; padding: 0 6px 0 10px; } }
+    @media (max-width: 620px) { .brand span { font-size: 13px; } .nav-inner { height: 50px; padding: 0 7px 0 11px; border-radius: 22px; } }
   </style>
 </head>
 <body>
@@ -52,7 +50,7 @@
         <img src="assets/icon.png" alt="Just Chess Puzzles icon">
         <span>Just Chess Puzzles</span>
       </a>
-      <a class="appstore" href="#" aria-label="Download on the App Store" data-appstore></a>
+      <a class="nav-download" href="#" aria-label="Download on the App Store"><i class="ph ph-app-store-logo" aria-hidden="true"></i>Download</a>
     </div>
   </header>
   <main>
@@ -65,9 +63,5 @@
     <p>Questions: <a href="mailto:support@justchesspuzzles.com">support@justchesspuzzles.com</a></p>
     <p class="updated">Last updated: July 2026</p>
   </main>
-  <script>
-    var badge = '<span class="as-logo"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></span><span class="as-txt"><small>Download on the</small><strong>App Store</strong></span>';
-    document.querySelectorAll('[data-appstore]').forEach(function (el) { el.innerHTML = badge; });
-  </script>
 </body>
 </html>

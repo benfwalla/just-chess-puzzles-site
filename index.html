@@ -19,7 +19,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
   <style>
     :root {
@@ -33,12 +34,12 @@
       --text-3:     #7E8695;
       --brass:      #C9A25D;
 
-      --sq-light:   #E9DCBB;
-      --sq-dark:    #A17E4C;
-      --sq-move:    rgba(201, 162, 93, 0.55);
+      --sq-light:   #E8ECCF;
+      --sq-dark:    #6E9152;
+      --sq-move:    #F2E86B66;
 
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
-      --sans:  "Hanken Grotesk", -apple-system, system-ui, sans-serif;
+      --sans:  "Instrument Sans", -apple-system, system-ui, sans-serif;
       --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
       --maxw: 1180px;
@@ -57,8 +58,11 @@
     /* ---------- atmosphere ---------- */
     .backdrop { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
     .backdrop::before {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, #12151A, var(--ink) 46%);
+      content: ""; position: absolute; inset: -20% -20% auto -20%; height: 90vh;
+      background:
+        radial-gradient(120% 80% at 70% -10%, rgba(201,162,93,0.28), transparent 55%),
+        radial-gradient(90% 70% at 20% 0%, rgba(94,120,180,0.10), transparent 60%);
+      filter: blur(10px);
     }
     .backdrop::after {
       content: ""; position: absolute; inset: 0;
@@ -68,7 +72,7 @@
       background-size: 68px 68px;
       -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 5%, transparent 62%);
               mask-image: radial-gradient(120% 90% at 50% 0%, #000 5%, transparent 62%);
-      opacity: 0.24;
+      opacity: 0.28;
     }
     .grain {
       position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
@@ -81,16 +85,24 @@
     /* ---------- nav (floating pill) ---------- */
     header.nav { position: sticky; top: 8px; z-index: 100; padding: 8px 12px 0; }
     .nav-inner {
-      max-width: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
-      height: 48px; padding: 0 6px 0 12px;
-      border-radius: 100px; border: 1px solid var(--hairline);
+      max-width: 450px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+      height: 56px; padding: 0 9px 0 14px;
+      border-radius: 26px; border: 1px solid var(--hairline);
       background: rgba(20, 23, 28, 0.72);
       backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22), 0 0 18px rgba(201, 162, 93, 0.035);
     }
     .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
-    .brand img { width: 24px; height: 24px; border-radius: 7px; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
     .brand span { font-weight: 600; font-size: 14px; letter-spacing: -0.01em; }
+    .nav-download {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 36px; padding: 0 16px;
+      color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600;
+      background: var(--ink-3); border: 1px solid var(--hairline-2); border-radius: 999px;
+      transition: border-color 0.25s;
+    }
+    .nav-download:hover { border-color: #4A505C; }
+    .nav-download i { font-size: 16px; line-height: 1; }
 
     /* ---------- App Store button ---------- */
     .appstore {
@@ -100,21 +112,24 @@
       font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
     }
     .appstore:hover { border-color: #4A505C; }
-    .appstore .as-logo svg { display: block; width: 28px; height: 28px; fill: #fff; }
+    .appstore .as-logo { display: grid; place-items: center; width: 28px; height: 28px; color: #fff; }
+    .appstore .as-logo i { font-size: 28px; line-height: 1; }
     .appstore .as-txt { display: flex; flex-direction: column; line-height: 1; color: #fff; }
     .appstore .as-txt small { font-size: 11px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.92; }
     .appstore .as-txt strong { font-size: 21px; font-weight: 500; letter-spacing: -0.01em; margin-top: 3px; }
     .appstore.sm { padding: 5px 11px 5px 9px; border-radius: 10px; gap: 7px; }
-    .appstore.sm .as-logo svg { width: 15px; height: 15px; }
+    .appstore.sm .as-logo { width: 15px; height: 15px; }
+    .appstore.sm .as-logo i { font-size: 15px; }
     .appstore.sm .as-txt small { font-size: 7px; }
     .appstore.sm .as-txt strong { font-size: 12px; margin-top: 1px; }
 
     /* ---------- hero ---------- */
-    .hero { padding: 44px 0 68px; }
+    .hero { padding: 44px 0 68px; isolation: isolate; }
+    .hero-grid { position: relative; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
     h1.hero-title {
-      font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5.6vw, 74px);
-      line-height: 1.0; letter-spacing: -0.02em; margin: 0; font-optical-sizing: auto;
+      font-family: var(--sans); font-weight: 650; font-size: clamp(40px, 5.6vw, 74px);
+      line-height: 0.98; letter-spacing: -0.05em; margin: 0;
     }
     .hero-sub { font-size: 19px; color: var(--text-2); max-width: 34ch; margin-top: 22px; line-height: 1.55; }
     .hero-cta { margin-top: 34px; display: flex; }
@@ -122,36 +137,49 @@
     /* ---------- phone ---------- */
     .phone-stage { display: flex; justify-content: center; position: relative; }
     .phone {
-      position: relative; z-index: 1; width: 300px; aspect-ratio: 300 / 620;
-      background: linear-gradient(150deg, #23272F, #0c0d10);
-      border-radius: 46px; padding: 12px;
-      box-shadow: 0 0 0 2px #34383F, 0 2px 2px 2px rgba(255,255,255,0.04) inset,
-        0 40px 80px -20px rgba(0,0,0,0.75), 0 10px 30px rgba(0,0,0,0.5);
+      position: relative; z-index: 1; width: 304px; aspect-ratio: 430 / 932;
+      background: #090A0C; border-radius: 44px; padding: 10px;
+      box-shadow: 0 0 0 1px #3A3E45, 0 1px 0 rgba(255,255,255,0.1) inset,
+        0 40px 80px -24px rgba(0,0,0,0.78), 0 10px 30px rgba(0,0,0,0.48);
     }
-    .phone-screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: var(--ink); display: flex; flex-direction: column; }
-    .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; background: #000; border-radius: 999px; z-index: 5; }
-    .scr-top { padding: 40px 16px 10px; display: flex; align-items: center; justify-content: space-between; }
-    .scr-theme { font-family: var(--mono); font-size: 11px; color: var(--brass); letter-spacing: 0.03em; }
-    .scr-rating { font-family: var(--mono); font-size: 11px; color: var(--text-2); background: var(--ink-3); padding: 4px 9px; border-radius: 999px; border: 1px solid var(--hairline); }
-    .scr-turn { padding: 0 16px 12px; font-size: 13px; color: var(--text-2); font-weight: 500; }
-    .scr-turn b { color: var(--text); font-weight: 600; }
-    .board-row { display: flex; gap: 8px; padding: 0 14px; align-items: stretch; }
-    .evalbar { width: 8px; border-radius: 4px; overflow: hidden; background: #111; border: 1px solid var(--hairline); position: relative; }
-    .evalbar .white { position: absolute; left: 0; right: 0; bottom: 0; height: 72%; background: linear-gradient(#fff, #d8d8d8); }
-    .board { flex: 1; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.3); }
+    .phone-screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; background: #0D0F12; display: flex; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .scr-top { height: 39px; padding: 0 11px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2A2F38; }
+    .scr-category { display: inline-flex; align-items: center; gap: 2px; color: var(--brass); font-size: 8px; letter-spacing: 0.01em; font-weight: 600; }
+    .scr-category i { font-size: 10px; }
+    .scr-tools { display: flex; align-items: center; gap: 12px; }
+    .scr-left { color: #5F6672; font-size: 8px; font-weight: 500; }
+    .scr-tool { width: 14px; height: 14px; color: #9BA3AF; }
+    .scr-main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 10px; }
+    .scr-prompt { min-height: 59px; padding: 0 0 8px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+    .scr-stakes { display: flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 8px; font-weight: 600; }
+    .scr-stakes .rating { color: var(--text); font-size: 10px; }
+    .scr-stakes .up { color: #5CB870; }
+    .scr-stakes .down { color: #E5484D; }
+    .scr-turn { margin-top: 1px; font-size: 14px; line-height: 1.1; color: var(--text); font-weight: 700; letter-spacing: -0.03em; }
+    .scr-hint { display: inline-flex; align-items: center; gap: 3px; padding: 6px 8px; border: 1px solid #2A2F38; border-radius: 9px; color: var(--brass); font-size: 9px; font-weight: 600; }
+    .scr-hint i { font-size: 11px; }
+    .board-row { display: flex; align-items: stretch; }
+    .board { flex: 1; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); aspect-ratio: 1 / 1; border-radius: 4px; overflow: hidden; }
     .sq { position: relative; }
-    .sq .pc { position: absolute; inset: 8%; z-index: 2; }
+    .sq .pc { position: absolute; inset: 7%; z-index: 2; }
     .sq .pc svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35)); }
     .sq.move::after { content: ""; position: absolute; inset: 0; background: var(--sq-move); z-index: 1; }
-    .sq .dot { position: absolute; top: 50%; left: 50%; width: 30%; height: 30%; transform: translate(-50%,-50%); background: rgba(20,20,20,0.32); border-radius: 50%; z-index: 1; }
-    .sq .ring { position: absolute; inset: 6%; border-radius: 50%; box-shadow: 0 0 0 4px rgba(20,20,20,0.28) inset; z-index: 1; }
+    .sq .dot { position: absolute; top: 50%; left: 50%; width: 30%; height: 30%; transform: translate(-50%,-50%); background: #14551E80; border-radius: 50%; z-index: 1; }
+    .sq .ring { position: absolute; inset: 6%; border-radius: 50%; box-shadow: 0 0 0 4px #14551E80 inset; z-index: 1; }
     .sq.sel::after { content: ""; position: absolute; inset: 0; background: var(--sq-move); z-index: 1; }
     .sq.check .pc { z-index: 3; }
     .sq.check::before { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(circle, rgba(229,72,77,0.9), rgba(229,72,77,0) 72%); }
-    .scr-foot { margin-top: auto; padding: 12px 16px 20px; display: flex; gap: 8px; }
-    .scr-btn { flex: 1; text-align: center; font-size: 12px; font-weight: 600; padding: 11px; border-radius: 11px; }
-    .scr-btn.ghost { border: 1px solid var(--hairline-2); color: var(--text-2); }
-    .scr-btn.solid { background: var(--brass); color: var(--ink); }
+    .sq .coord-rank, .sq .coord-file { position: absolute; z-index: 4; font-family: var(--mono); font-size: 5px; font-weight: 600; pointer-events: none; }
+    .sq .coord-rank { left: 2px; top: 1px; }
+    .sq .coord-file { right: 2px; bottom: 1px; }
+    .sq.light .coord-rank, .sq.light .coord-file { color: var(--sq-dark); }
+    .sq.dark .coord-rank, .sq.dark .coord-file { color: var(--sq-light); }
+    .scr-foot { padding: 8px 10px 12px; display: grid; grid-template-columns: 1.35fr 1.32fr 0.48fr 0.48fr; gap: 7px; }
+    .scr-btn { height: 37px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 9px; font-weight: 600; border-radius: 8px; border: 1px solid #2A2F38; color: #9BA3AF; }
+    .scr-btn.play { color: var(--brass); }
+    .scr-btn.next { border-color: var(--brass); background: var(--brass); color: var(--ink); }
+    .scr-btn.icon { color: var(--text); }
+    .scr-btn.icon i { font-size: 17px; }
 
     /* ---------- features (screenshots) ---------- */
     .features { padding: 48px 0 100px; }
@@ -170,7 +198,7 @@
     .shot-ph { text-align: center; color: var(--text-3); z-index: 1; }
     .shot-ph .icn { width: 42px; height: 42px; opacity: 0.5; margin: 0 auto 12px; border-radius: 11px; object-fit: contain; }
     .shot-ph .t { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
-    .shot-cap { margin-top: 20px; max-width: 12ch; font-size: clamp(20px, 2vw, 28px); font-weight: 600; line-height: 1.12; letter-spacing: -0.03em; color: var(--text); }
+    .shot-cap { margin: 20px auto 0; max-width: 13ch; text-align: center; font-size: clamp(20px, 2vw, 28px); font-weight: 600; line-height: 1.12; letter-spacing: -0.03em; color: var(--text); }
 
     /* ---------- footer ---------- */
     footer.site { border-top: 1px solid var(--hairline); padding: 48px 0 56px; }
@@ -193,7 +221,7 @@
     @media (max-width: 620px) {
       body { font-size: 16px; }
       .brand span { font-size: 13px; }
-      .nav-inner { height: 46px; padding: 0 6px 0 10px; }
+      .nav-inner { height: 50px; padding: 0 7px 0 11px; border-radius: 22px; }
       .appstore { padding: 12px 22px 12px 18px; }
       .appstore .as-txt strong { font-size: 19px; }
     }
@@ -210,7 +238,7 @@
         <img src="assets/icon.png" alt="Just Chess Puzzles icon">
         <span>Just Chess Puzzles</span>
       </a>
-      <a class="appstore sm" href="#" aria-label="Download on the App Store" data-appstore></a>
+      <a class="nav-download" href="#" aria-label="Download on the App Store"><i class="ph ph-app-store-logo" aria-hidden="true"></i>Download</a>
     </div>
   </header>
 
@@ -221,7 +249,7 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <h1 class="hero-title">$5 for 100,000+ offline chess puzzles.</h1>
-        <p class="hero-sub">Every puzzle comes with hints, an Elo bar, and a play-on mode to finish the win against the engine. No accounts, no ads, no bs.</p>
+        <p class="hero-sub">Hints when you need them, rating feedback after every puzzle, and a play-on mode for finishing won positions against the engine.</p>
         <div class="hero-cta">
           <a class="appstore" href="#" aria-label="Download on the App Store" data-appstore></a>
         </div>
@@ -230,19 +258,30 @@
       <div class="phone-stage">
         <div class="phone">
           <div class="phone-screen">
-            <div class="island"></div>
             <div class="scr-top">
-              <span class="scr-theme">fork</span>
-              <span class="scr-rating">rating 1523</span>
+              <span class="scr-category">All Categories <i class="ph ph-caret-down" aria-hidden="true"></i></span>
+              <span class="scr-tools">
+                <i class="ph ph-chart-bar scr-tool" aria-hidden="true"></i>
+                <i class="ph ph-gear scr-tool" aria-hidden="true"></i>
+              </span>
             </div>
-            <div class="scr-turn"><b>White</b> to move · find the shot</div>
-            <div class="board-row">
-              <div class="evalbar"><div class="white"></div></div>
-              <div class="board" id="board"></div>
+            <div class="scr-main">
+              <div class="scr-prompt">
+                <div>
+                  <div class="scr-stakes"><span class="rating">1200</span><span class="up">+23</span><span class="down">−17</span></div>
+                  <div class="scr-turn">Black to move</div>
+                </div>
+                <div class="scr-hint"><i class="ph ph-lightbulb" aria-hidden="true"></i>Hint</div>
+              </div>
+              <div class="board-row">
+                <div class="board" id="board"></div>
+              </div>
             </div>
             <div class="scr-foot">
-              <div class="scr-btn ghost">Hint</div>
-              <div class="scr-btn solid">Play it out</div>
+              <div class="scr-btn play">Play it out</div>
+              <div class="scr-btn next">Next</div>
+              <div class="scr-btn icon"><i class="ph ph-caret-left" aria-hidden="true"></i></div>
+              <div class="scr-btn icon"><i class="ph ph-caret-right" aria-hidden="true"></i></div>
             </div>
           </div>
         </div>
@@ -301,7 +340,7 @@
 
   <script>
     // ---- App Store button ----
-    var badge = '<span class="as-logo"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></span>' +
+    var badge = '<span class="as-logo"><i class="ph ph-app-store-logo" aria-hidden="true"></i></span>' +
       '<span class="as-txt"><small>Download on the</small><strong>App Store</strong></span>';
     document.querySelectorAll('[data-appstore]').forEach(function (el) { el.innerHTML = badge; });
 
@@ -322,28 +361,28 @@
     function pc(code){ return '<span class="pc"><svg viewBox="0 0 45 45">'+P[code]+'</svg></span>'; }
 
     var pos = {
-      a8:'bR', d8:'bQ', g8:'bK',
-      a7:'bP', b7:'bP', e7:'bB', f7:'bP', g7:'bP', h7:'bP',
-      c6:'bR', f6:'bN',
-      e5:'wN',
-      b3:'wB',
-      a2:'wP', b2:'wP', c2:'wP', f2:'wP', g2:'wP', h2:'wP',
-      d1:'wQ', f1:'wR', g1:'wK'
+      a8:'bR', b8:'bN', d8:'bQ', h8:'bK',
+      a7:'bP', b7:'bP', g7:'bP', h7:'bP', b6:'bB', c3:'bP',
+      e6:'wB', e5:'wN', f4:'wQ',
+      a2:'wP', b2:'wP', g2:'wP', h2:'wP',
+      a1:'wR', b1:'wN', h1:'wK'
     };
-    var selected = 'e5';
-    var lastMove = { from:'f3', to:'e5' };
-    var dots = ['c4','d3','d7','g4','g6'];
-    var rings = ['c6','f7'];
-    var check = 'g8';
+    var selected = 'b6';
+    var lastMove = { from:'f1', to:'f4' };
+    var dots = ['c7','c5','d4','e3','f2','g1','a5'];
+    var rings = [];
+    var check = null;
 
-    var files = ['a','b','c','d','e','f','g','h'];
+    var files = ['h','g','f','e','d','c','b','a'];
     var boardEl = document.getElementById('board');
     var html = '';
-    for (var r = 8; r >= 1; r--) {
+    for (var r = 1; r <= 8; r++) {
       for (var f = 0; f < 8; f++) {
         var sqName = files[f] + r;
-        var isLight = (f + r) % 2 === 0;
+        var fileIndex = 'abcdefgh'.indexOf(files[f]);
+        var isLight = (fileIndex + r) % 2 === 0;
         var cls = 'sq';
+        cls += isLight ? ' light' : ' dark';
         if (sqName === selected) cls += ' sel';
         else if (sqName === lastMove.from || sqName === lastMove.to) cls += ' move';
         if (sqName === check) cls += ' check';
@@ -352,6 +391,8 @@
         if (pos[sqName]) inner += pc(pos[sqName]);
         if (dots.indexOf(sqName) !== -1) inner += '<span class="dot"></span>';
         if (rings.indexOf(sqName) !== -1) inner += '<span class="ring"></span>';
+        if (f === 0) inner += '<span class="coord-rank">'+r+'</span>';
+        if (r === 8) inner += '<span class="coord-file">'+files[f]+'</span>';
         html += '<div class="'+cls+'" style="background:'+bg+'">'+inner+'</div>';
       }
     }
