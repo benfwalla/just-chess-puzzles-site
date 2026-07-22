@@ -212,14 +212,14 @@
     .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.04; letter-spacing: -0.02em; }
 
     .shots-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-    .shot { position: relative; width: 100%; aspect-ratio: 300 / 620; margin: 0 auto;
+    .shot { position: relative; width: 100%; aspect-ratio: 720 / 1561; margin: 0 auto;
       background: linear-gradient(150deg, #23272F, #0c0d10); border-radius: 44px; padding: 11px;
       box-shadow: 0 0 0 2px #34383F, 0 30px 70px -22px rgba(0,0,0,0.7); }
     .shot-inner { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: var(--ink-2);
       display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;
       background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 14px, transparent 14px 28px);
       border: 1px dashed var(--hairline-2); }
-    .shot-inner > img.fill { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .shot-inner > img.fill { width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; }
     .shot-inner.has-img { border: none; background-image: none; background: #000; }
     .shot-ph { text-align: center; color: var(--text-3); z-index: 1; }
     .shot-ph .icn { width: 42px; height: 42px; opacity: 0.5; margin: 0 auto 12px; border-radius: 11px; object-fit: contain; }
@@ -249,15 +249,20 @@
       .hero-grid { grid-template-columns: 1fr; gap: 44px; text-align: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-cta { justify-content: center; }
-      .shots-scroll { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 62%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scrollbar-width: none; }
+      .shots-scroll { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 62%; overflow-x: auto; scroll-snap-type: x mandatory; padding-top: 8px; padding-bottom: 14px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scrollbar-width: none; }
       .shots-scroll::-webkit-scrollbar { display: none; }
       .shots-scroll > div { scroll-snap-align: center; }
       .shots-scroll .shot { max-width: 260px; }
     }
     @media (max-width: 620px) {
-      body { font-size: 16px; }
+      body { font-size: 16px; padding-top: 56px; }
       .brand span { font-size: 13px; }
-      .nav-inner { height: 50px; padding: 0 7px 0 11px; border-radius: 22px; }
+      /* nav becomes a solid full-width bar pinned to the top */
+      header.nav { position: fixed; top: 0; left: 0; right: 0; padding: 0; }
+      .nav-inner {
+        max-width: none; margin: 0; height: 56px; padding: 0 12px 0 14px;
+        border-radius: 0; border: none; border-bottom: 1px solid var(--hairline);
+      }
       .appstore { padding: 12px 22px 12px 18px; }
       .appstore .as-txt strong { font-size: 19px; }
     }
@@ -364,7 +369,7 @@
   <section class="specs">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Everything it does</h2>
+        <h2>Everything Else</h2>
       </div>
       <div class="specs-grid">
         <div class="spec-group">
